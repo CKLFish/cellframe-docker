@@ -4,7 +4,9 @@ ENV DEBIAN_FRONTEND noninteractive
 
 # 1. Get the necessary packages for setting up public key.
 
-RUN apt-get update && apt-get -y install wget gnupg procps
+RUN apt-get update && apt-get -y install wget gnupg procps libmagic1 libjson-c-dev \
+    && rm -rf /var/lib/apt/lists/*
+
 
 RUN echo "deb https://debian.pub.demlabs.net/public bullseye main" > /etc/apt/sources.list.d/demlabs.list
 
